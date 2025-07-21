@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="src/assets/file.svg" />
+		<title>Hana :3</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Dancing+Script:wght@400;500;600&family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		background: linear-gradient(135deg, #2d1b3d 0%,rgb(30, 40, 92) 25%,rgb(67, 44, 107) 50%,rgb(82, 89, 168) 75%,rgb(30, 36, 92) 100%);
+		min-height: 100vh;
+		position: relative;
+		overflow-x: hidden;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+
+	}
+
+	/* Animated background bubbles */
+	body::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: 
+			radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15) 2px, transparent 2px),
+			radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+			radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+		background-size: 150px 150px, 100px 100px, 200px 200px;
+		animation: float-bubbles 20s ease-in-out infinite;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+
+	@keyframes float-bubbles {
+		0%, 100% { 
+			transform: translateY(0px) rotate(0deg);
+			opacity: 0.7;
+		}
+		33% { 
+			transform: translateY(-20px) rotate(120deg);
+			opacity: 0.9;
+		}
+		66% { 
+			transform: translateY(-10px) rotate(240deg);
+			opacity: 0.8;
+		}
+	}
+
+	@keyframes float-hearts {
+		0% { 
+			transform: translateY(100vh) translateX(-10px);
+		}
+		100% { 
+			transform: translateY(-100px) translateX(10px);
+		}
+	}
+
+	/* Ensure content appears above background effects */
+	body > :not(::before):not(::after) {
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Add some subtle glow effect */
+	body {
+		box-shadow: inset 0 0 100px rgba(255, 182, 193, 0.2);
+	}
+
+	/* Optional: Add a subtle pattern overlay */
+	html {
+		background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M20 20c0 0 0-8 0-8s8 0 8 0 0 8 0 8-8 0-8 0z'/%3E%3C/g%3E%3C/svg%3E");
+	}
+</style>
